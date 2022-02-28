@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Classifier</title>
+    <link rel="script" href="app.py">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+</head>
+<body style="padding:20px">
+  <h1>Точность модели составляет {{ acc }}%</h1>
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-5 d-sm-flex justify-content-sm-center">
+      {% for i in range(4) %}
+        <div class="feature col">
+          <h8 class="d-sm-flex justify-content-sm-center">Ожидаемый результат</h8>
+          <h2 class="d-sm-flex justify-content-sm-center">{{ sample[i] }}</h2>
+          <div class="feature-icon d-sm-flex justify-content-sm-center">
+            <img src="static/img/{{i}}.jpg" height="100px">
+          </div>
+          <h2 class="d-sm-flex justify-content-sm-center">{{ pred[i] }}</h2>
+            {% if (sample[i] == pred[i]) %}
+            <p class="d-sm-flex justify-content-sm-center">Классифицировано верно</p>
+            {% else %}
+            <p class="d-sm-flex justify-content-sm-center">Классифицировано неверно</p>
+            {%endif%}
+        </div>
+      {% endfor %}
+    </div>
+</body>
+</html>
